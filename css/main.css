@@ -1,0 +1,188 @@
+/*COMMON*/
+body {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4; /*줄높이*/
+  font-family: 'Nanum Gothic', sans-serif;
+  height: 3000px;
+}
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+} 
+.inner {
+  width: 1100px;
+  margin: 0 auto; /*가운데정렬*/
+  position: relative;
+}
+
+/*HEADER*/
+header {
+  width: 100%;
+  background-color: #f6f5f0;
+  border-bottom: 1px solid #c8c8c8;
+  position: fixed; /*뷰포트 기준 픽스드, 앱솔루트는 가로넓이를 최소한으로 쓰려고 함*/
+  top:0;
+}
+header .inner {
+  height: 120px;   
+}
+header .logo {
+  height: 75px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left:0;
+  margin: auto;
+}
+header .sub-menu {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  display: flex;
+}
+header .sub-menu ul.menu {
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+header .sub-menu ul.menu li {
+  position: relative;
+}
+header .sub-menu ul.menu li::before { /*가상요소선택자 인라인요소*/ 
+  content: "";
+  width: 1px;
+  height: 12px;
+  background-color: #e5e5e5;
+  position: absolute; /*부모요소기준으로 지정 블럭으로 자동으로 바뀜*/
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
+}
+header .sub-menu ul.menu li:first-child::before{
+  display: none;
+}
+header .sub-menu ul.menu li a {
+  font-size: 13px;
+  padding: 11px 16px;
+  display: block; /*a태그는 인라인이기 때문에 ui를 위해 블럭처리*/
+  color: #656565;
+}
+header .sub-menu ul.menu li a:hover {
+  color: #000;
+}
+header .sub-menu .search {
+  height: 34px;
+  position: relative;
+
+}
+header .sub-menu .search input {
+ width: 36px; 
+ height: 34px;
+ padding: 4px 10px;
+ border: 1px solid #ccc;
+ box-sizing: border-box;
+ border-radius: 5px; /*둥글게 모서리 깎기*/
+ outline: none;
+ background-color: #fff;
+ color: #777;
+ font-size: 12px;
+ transition: width .4s;
+}
+header .sub-menu .search input:focus{
+  width: 190px;
+  border-color: #669900;
+}
+header .sub-menu .search .material-icons {
+  height: 24px; /*구글에서 제공하는 메타리얼 아이콘 폰트 크기*/
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 5px;
+  margin: auto;
+  transition: .4s;
+}
+header .sub-menu .search.focused .material-icons {
+  opacity: 0;
+}
+header .main-menu {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1; /*이것을 펼쳤을 때 나머지가 밑으로 덮어지도록 인덱스를 올림*/
+  display: flex;
+}
+header .main-menu .item {
+
+}
+header .main-menu .item .item__name {
+  padding: 10px 20px 34px 20px; /*위 오 아래 왼*/
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+header .main-menu .item:hover .item__name {
+  background-color: #2c2a29;
+  color: #669900;
+  border-radius: 6px 6px 0 0; /*좌상단 우상단 좌하단 우하단*/
+}
+header .main-menu .item .item__contents {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  display: none;
+}
+header .main-menu .item:hover .item__contents {
+  display: block;
+}
+header .main-menu .item .item__contents .contents__menu {
+  background-color: #2C2A29;
+  padding: 0 0 140px 0;
+}
+header .main-menu .item .item__contents .contents__menu > ul { /*바로 메뉴의 자식 ul태그 자식선택자*/
+  display: flex;
+  padding: 20px 0;/*위아래 20 좌우 사용x*/
+}
+header .main-menu .item .item__contents .contents__menu > ul > li {
+  width: 220px;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li h4 {
+  padding: 3px 0 12px 0;  /*위 오른 아래 왼*/
+  font-size: 14px;
+  color: #fff;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li {
+  padding: 5px 0;
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li:hover {
+  color: #669900;
+}
+header .main-menu .item .item__contents .contents__texture {
+  padding: 26px 0;
+  font-size: 12px;
+  background-image: url("../images/main_menu_pattern.jpg");
+}
+header .main-menu .item .item__contents .contents__texture h4 {
+  color: #999;
+  font-weight: 900;
+}
+header .main-menu .item .item__contents .contents__texture p {
+  color: #64a70b;
+  margin: 4px 0 14px; /*상 중 하 (위 왼오 아래)*/
+}
+header .badges {
+  position: absolute;
+  top: 132px;
+  right: 12px;
+}
+header .badges .badge {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,.15); /*x축y축 블러 rgba(a:투명도)*/
+  cursor: pointer;
+}
